@@ -167,9 +167,8 @@ const FAQPage = () => {
                                     >
                                         <span>{faq.q}</span>
                                         <svg
-                                            className={`w-6 h-6 transform transition-transform duration-300 ${
-                                                openIndex === index ? '-rotate-180 text-green-600' : 'rotate-0'
-                                            }`}
+                                            className={`w-6 h-6 transform transition-transform duration-300 ${openIndex === index ? '-rotate-180 text-green-600' : 'rotate-0'
+                                                }`}
                                             xmlns="http://www.w3.org/2000/svg"
                                             fill="none"
                                             viewBox="0 0 24 24"
@@ -180,9 +179,8 @@ const FAQPage = () => {
                                     </button>
 
                                     <div
-                                        className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                                            openIndex === index ? 'max-h-40 mt-3' : 'max-h-0'
-                                        }`}
+                                        className={`overflow-hidden transition-all duration-500 ease-in-out ${openIndex === index ? 'max-h-40 mt-3' : 'max-h-0'
+                                            }`}
                                     >
                                         <p className="text-gray-600">{faq.a}</p>
                                     </div>
@@ -201,6 +199,8 @@ const TermsAndConditionsPage = () => (
         <div className="max-w-4xl mx-auto prose prose-lg text-gray-600">
             <h1 className="text-gray-900">Terms and Conditions</h1>
             <p>Welcome to our Scholarship Portal. By using this website, you agree to comply with and be bound by the following terms and conditions.</p>
+            <h2>1. User Agreement</h2>
+            <p>Your use of this website is subject to these terms. If you disagree with any part of these terms and conditions, please do not use our website.</p>
             <h2>1. User Agreement</h2>
             <p>Your use of this website is subject to these terms. If you disagree with any part of these terms and conditions, please do not use our website.</p>
         </div>
@@ -344,5 +344,3 @@ const Footer = () => {
 
 export { AboutUsPage, ContactUsPage, FAQPage, TermsAndConditionsPage };
 export default Footer;
-
-

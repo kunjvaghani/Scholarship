@@ -40,10 +40,10 @@ const ScholarshipCard = ({ scholarship }) => {
         endDate.setHours(0, 0, 0, 0);
 
         if (endDate < today) return { text: "Closed", color: "bg-red-100 text-red-800" };
-        
+
         const diffTime = endDate - today;
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        
+
         if (diffDays === 0) return { text: "Ends Today", color: "bg-orange-100 text-orange-800" };
 
         return { text: `${diffDays} days left`, color: "bg-yellow-100 text-yellow-800" };
@@ -54,8 +54,8 @@ const ScholarshipCard = ({ scholarship }) => {
     return (
         <Link to={`/scholarship/${scholarship._id}`} className="block bg-white rounded-2xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border border-gray-100">
             <div className="relative">
-                <img src={imageUrl} alt={scholarship.title} className="w-full h-40 object-cover" 
-                     onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x400/e6f7f6/15803d?text=Scholarship'; }}
+                <img src={imageUrl} alt={scholarship.title} className="w-full h-40 object-cover"
+                    onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/600x400/e6f7f6/15803d?text=Scholarship'; }}
                 />
                 <div className={`absolute top-3 right-3 text-sm font-bold px-3 py-1 rounded-full ${remaining.color}`}>
                     {remaining.text}
@@ -114,7 +114,7 @@ const StudentServicesPage = () => {
     useEffect(() => {
         let result = [...scholarships];
         const today = new Date();
-        today.setHours(0,0,0,0); // Normalize today's date
+        today.setHours(0, 0, 0, 0); // Normalize today's date
 
         // 1. Filter by Status (Live, Upcoming, Closed)
         if (activeStatus === 'live') {
@@ -136,13 +136,13 @@ const StudentServicesPage = () => {
                 return activeFilterKeys.every(key => {
                     const filterValues = filters[key]; // e.g., ['Gujarat', 'Maharashtra']
                     const scholarshipValue = scholarship[key]; // e.g., 'Gujarat'
-                    
+
                     // If the scholarship's value is in the array of selected filters, it's a match.
                     return filterValues.includes(scholarshipValue);
                 });
             });
         }
-        
+
         setFilteredScholarships(result);
     }, [scholarships, activeStatus, filters]);
 
@@ -166,7 +166,7 @@ const StudentServicesPage = () => {
         <div className="w-full font-sans" style={{ backgroundImage: 'linear-gradient(135deg, #f0fdf4 0%, #e6f7f6 100%)' }}>
             <div className="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-                    
+
                     {/* --- Left Sidebar --- */}
                     <aside className="lg:col-span-1 bg-white p-6 rounded-2xl shadow-lg h-fit">
                         <h2 className="text-2xl font-extrabold text-gray-800 mb-4">Filters</h2>
@@ -180,18 +180,17 @@ const StudentServicesPage = () => {
                     {/* --- Right Main Content --- */}
                     <main className="lg:col-span-3">
                         <h1 className="text-3xl font-bold text-gray-800 mb-6">Scholarships for Indian Students</h1>
-                        
+
                         {/* Status Buttons */}
                         <div className="flex flex-wrap gap-2 mb-8 border-b-2 border-gray-200 pb-4">
                             {['live', 'upcoming', 'closed'].map(status => (
                                 <button
                                     key={status}
                                     onClick={() => setActiveStatus(status)}
-                                    className={`px-6 py-3 font-bold text-lg rounded-full transition-all duration-300 ${
-                                        activeStatus === status 
-                                        ? 'bg-green-600 text-white shadow-md' 
-                                        : 'bg-white text-gray-600 hover:bg-green-50'
-                                    }`}
+                                    className={`px-6 py-3 font-bold text-lg rounded-full transition-all duration-300 ${activeStatus === status
+                                            ? 'bg-green-600 text-white shadow-md'
+                                            : 'bg-white text-gray-600 hover:bg-green-50'
+                                        }`}
                                 >
                                     {status.charAt(0).toUpperCase() + status.slice(1)} Scholarships
                                 </button>
@@ -208,12 +207,12 @@ const StudentServicesPage = () => {
                                 ))}
                             </div>
                         )}
-                         { !loading && filteredScholarships.length === 0 && (
+                        {!loading && filteredScholarships.length === 0 && (
                             <div className="text-center py-16 bg-white rounded-2xl shadow-md">
                                 <h3 className="text-2xl font-bold text-gray-700">No Scholarships Found</h3>
                                 <p className="text-gray-500 mt-2">Try adjusting your filters or checking another category.</p>
                             </div>
-                         )}
+                        )}
                     </main>
                 </div>
             </div>

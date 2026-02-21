@@ -16,9 +16,9 @@ const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    
+
     // Get the login function and loading state from context
-    const { login, loading } = useAuth(); 
+    const { login, loading } = useAuth();
     const navigate = useNavigate();
 
     const handleLogin = async (e) => {
@@ -26,7 +26,7 @@ const LoginPage = () => {
         setError('');
 
         // Use the login function from context
-        const result = await login(email, password); 
+        const result = await login(email, password);
 
         if (result.success) {
             navigate('/'); // Redirect on successful login

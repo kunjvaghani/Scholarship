@@ -59,7 +59,7 @@ const AdminUserDetail = () => {
             <DetailSection title="Address" data={user.address || {}} />
             <DetailSection title="Guardian" data={user.guardian || {}} />
             <DetailSection title="Academics" data={user.academics || {}} />
-            
+
         </div>
     );
 };

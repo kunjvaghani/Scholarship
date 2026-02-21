@@ -1,51 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import { FiUsers, FiAward } from 'react-icons/fi';
-
-// const StatCard = ({ icon, label, value, color }) => (
-//     <div className="bg-white p-6 rounded-2xl shadow-lg flex items-center">
-//         <div className={`p-3 rounded-full ${color}`}>{icon}</div>
-//         <div className="ml-4">
-//             <p className="text-3xl font-extrabold text-gray-800">{value}</p>
-//             <p className="text-gray-500 font-semibold">{label}</p>
-//         </div>
-//     </div>
-// );
-
-// const AdminDashboard = () => {
-//     const [stats, setStats] = useState({ totalUsers: 0, totalScholarships: 0 });
-//     const [loading, setLoading] = useState(true);
-
-//     useEffect(() => {
-//         const fetchStats = async () => {
-//             try {
-//                 const { data } = await axios.get('/api/admin/stats');
-//                 setStats(data);
-//             } catch (error) {
-//                 console.error("Failed to fetch admin stats:", error);
-//             } finally {
-//                 setLoading(false);
-//             }
-//         };
-//         fetchStats();
-//     }, []);
-
-//     return (
-//         <div>
-//             <h1 className="text-4xl font-extrabold text-gray-900 mb-6">Admin Dashboard</h1>
-//             {loading ? <p>Loading stats...</p> : (
-//                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-//                     <StatCard icon={<FiUsers size={24} className="text-blue-600"/>} label="Total Users" value={stats.totalUsers} color="bg-blue-100" />
-//                     <StatCard icon={<FiAward size={24} className="text-green-600"/>} label="Total Scholarships" value={stats.totalScholarships} color="bg-green-100" />
-//                 </div>
-//             )}
-//         </div>
-//     );
-// };
-
-// export default AdminDashboard;
-
-
 // 16-08-2025
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -55,11 +7,10 @@ const StatusButton = ({ currentStatus, newStatus, onClick, children, color }) =>
     <button
         onClick={() => onClick(newStatus)}
         disabled={currentStatus === newStatus}
-        className={`px-3 py-1 text-sm font-semibold rounded-full transition-colors ${
-            currentStatus === newStatus
-                ? `${color} text-white`
-                : `bg-gray-200 text-gray-700 hover:bg-gray-300`
-        }`}
+        className={`px-3 py-1 text-sm font-semibold rounded-full transition-colors ${currentStatus === newStatus
+            ? `${color} text-white`
+            : `bg-gray-200 text-gray-700 hover:bg-gray-300`
+            }`}
     >
         {children}
     </button>

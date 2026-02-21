@@ -5,34 +5,47 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Import your existing page components
-import NavBar from './components/NavBar';
-import LoginPage from './components/Login';
-import RegisterPage from './components/RegisterPage';
-import ImageSlider from './components/ImageSlider';
-import StatsSection from './components/StatsSection';
-import TypingAnimation from './components/TypingAnimation';
-import ApplicationSteps from './components/ApplicationSteps';
-import BecomePartner from './components/BecomePartner';
-import Footer, { AboutUsPage, ContactUsPage, FAQPage, TermsAndConditionsPage } from './components/Footer';
-import CreateScholarship from './components/createscholarship';
-import Services from "./components/StudentServicesPage";
-import ForgotPasswordPage from "./components/ForgotPasswordPage";
-import DashboardPage from './components/DashBoardPage';
-import DashboardLayout from './components/DashboardLayout';
-import MyApplications from './components/MyApplications';
-import ScholarshipDetailPage from './components/ScholarshipDetailPage';
-import AdminLayout from './components/AdminLayout';
-import AdminDashboard from './components/AdminDashboard';
-import AdminRoute from './components/AdminRoute';
-import AdminUserList from './components/AdminUserList'; // <-- Import new
-import AdminUserDetail from './components/AdminUserDetail'; // <-- Import new
+// Import layout components
+import NavBar from './layout/NavBar';
+import Footer, { AboutUsPage, ContactUsPage, FAQPage, TermsAndConditionsPage } from './layout/Footer';
+import DashboardLayout from './layout/DashboardLayout';
+import AdminLayout from './layout/AdminLayout';
+
+// Import auth components
+import LoginPage from './auth/Login';
+import RegisterPage from './auth/RegisterPage';
+import ForgotPasswordPage from './auth/ForgotPasswordPage';
+
+// Import admin components
+import CreateScholarship from './admin/createscholarship';
+import AdminDashboard from './admin/AdminDashboard';
+import AdminRoute from './admin/AdminRoute';
+import AdminUserList from './admin/AdminUserList';
+import AdminUserDetail from './admin/AdminUserDetail';
+
+// Import page components
+import DashboardPage from './pages/DashBoardPage';
+import ScholarshipDetailPage from './pages/ScholarshipDetailPage';
+
+// Import services
+import Services from "./services/StudentServicesPage";
+
+// Import student components
+import MyApplications from './student/MyApplications';
+
+// Import common components
+import ImageSlider from './components/common/ImageSlider';
+import StatsSection from './components/common/StatsSection';
+import TypingAnimation from './components/common/TypingAnimation';
+import ApplicationSteps from './components/common/ApplicationSteps';
+import BecomePartner from './components/common/BecomePartner';
 
 // --- Main App Component ---
 const App = () => {
     return (
         <AuthProvider>
             <Router>
-                
+
                 <NavBar />
                 <main>
                     <Routes>

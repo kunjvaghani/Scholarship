@@ -40,8 +40,8 @@ const CreateScholarship = () => {
     ];
 
     return (
-        
-        <div 
+
+        <div
             className="min-h-screen w-full font-sans py-12 px-4 sm:px-6 lg:px-8"
             style={{ backgroundImage: 'linear-gradient(135deg, #f0fdf4 0%, #e6f7f6 100%)' }}
         >
@@ -54,9 +54,8 @@ const CreateScholarship = () => {
                 </div>
 
                 {message.text && (
-                    <div className={`p-4 mb-6 rounded-lg text-center font-medium text-lg ${
-                        message.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                    }`}>
+                    <div className={`p-4 mb-6 rounded-lg text-center font-medium text-lg ${message.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                        }`}>
                         {message.text}
                     </div>
                 )}
@@ -88,7 +87,7 @@ const CreateScholarship = () => {
                             <input id="officialLink" type="url" name="officialLink" required className={inputStyle} />
                         </div>
                     </div>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <div>
                             <label htmlFor="category" className={labelStyle}>Category:</label>
@@ -150,8 +149,9 @@ const CreateScholarship = () => {
                             </select>
                         </div>
                     </div>
-                    
-                    
+
+
+
 
                     <div className="pt-6">
                         <button type="submit" className="w-full flex justify-center py-4 px-4 border border-transparent rounded-full shadow-lg text-lg font-bold text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-300 ease-in-out hover:scale-105">

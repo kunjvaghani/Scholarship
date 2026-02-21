@@ -22,9 +22,9 @@ const AdminLayout = () => {
                     <aside className="md:col-span-1 bg-white p-6 rounded-2xl shadow-lg h-fit">
                         <h2 className="text-xl font-bold text-gray-800 mb-4">Admin Panel</h2>
                         <nav className="space-y-2">
-                            <NavLink to="/admin/dashboard" end className={({isActive}) => `${linkClasses} ${isActive ? activeLinkClasses : 'hover:bg-gray-100'}`}><FiGrid className="mr-3" /> Dashboard</NavLink>
-                            <NavLink to="/admin/users" className={({isActive}) => `${linkClasses} ${isActive ? activeLinkClasses : 'hover:bg-gray-100'}`}><FiUsers className="mr-3" /> Users</NavLink>
-                            <NavLink to="/admin/scholarships" className={({isActive}) => `${linkClasses} ${isActive ? activeLinkClasses : 'hover:bg-gray-100'}`}><FiAward className="mr-3" /> Scholarships</NavLink>
+                            <NavLink to="/admin/dashboard" end className={({ isActive }) => `${linkClasses} ${isActive ? activeLinkClasses : 'hover:bg-gray-100'}`}><FiGrid className="mr-3" /> Dashboard</NavLink>
+                            <NavLink to="/admin/users" className={({ isActive }) => `${linkClasses} ${isActive ? activeLinkClasses : 'hover:bg-gray-100'}`}><FiUsers className="mr-3" /> Users</NavLink>
+                            <NavLink to="/admin/scholarships" className={({ isActive }) => `${linkClasses} ${isActive ? activeLinkClasses : 'hover:bg-gray-100'}`}><FiAward className="mr-3" /> Scholarships</NavLink>
                             <button onClick={handleLogout} className={`${linkClasses} w-full text-red-600 hover:bg-red-50`}>
                                 <FiLogOut className="mr-3" /> Logout
                             </button>

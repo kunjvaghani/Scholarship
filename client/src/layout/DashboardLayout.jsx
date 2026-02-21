@@ -23,10 +23,10 @@ const DashboardLayout = () => {
                     {/* --- Sidebar --- */}
                     <aside className="md:col-span-1 bg-white p-6 rounded-2xl shadow-lg h-fit">
                         <nav className="space-y-2">
-                            <NavLink to="/dashboard" end className={({isActive}) => `${linkClasses} ${isActive ? activeLinkClasses : 'hover:bg-gray-50'}`}><FiGrid className="mr-3" /> Dashboard</NavLink>
-                            <NavLink to="/dashboard/my-applications" className={({isActive}) => `${linkClasses} ${isActive ? activeLinkClasses : 'hover:bg-gray-50'}`}><FiFileText className="mr-3" /> My Applications</NavLink>
-                            <NavLink to="/dashboard/awarded" className={({isActive}) => `${linkClasses} ${isActive ? activeLinkClasses : 'hover:bg-gray-50'}`}><FiAward className="mr-3" /> Awarded</NavLink>
-                            <NavLink to="/dashboard/settings" className={({isActive}) => `${linkClasses} ${isActive ? activeLinkClasses : 'hover:bg-gray-50'}`}><FiSettings className="mr-3" /> Settings</NavLink>
+                            <NavLink to="/dashboard" end className={({ isActive }) => `${linkClasses} ${isActive ? activeLinkClasses : 'hover:bg-gray-50'}`}><FiGrid className="mr-3" /> Dashboard</NavLink>
+                            <NavLink to="/dashboard/my-applications" className={({ isActive }) => `${linkClasses} ${isActive ? activeLinkClasses : 'hover:bg-gray-50'}`}><FiFileText className="mr-3" /> My Applications</NavLink>
+                            <NavLink to="/dashboard/awarded" className={({ isActive }) => `${linkClasses} ${isActive ? activeLinkClasses : 'hover:bg-gray-50'}`}><FiAward className="mr-3" /> Awarded</NavLink>
+                            <NavLink to="/dashboard/settings" className={({ isActive }) => `${linkClasses} ${isActive ? activeLinkClasses : 'hover:bg-gray-50'}`}><FiSettings className="mr-3" /> Settings</NavLink>
                             <button onClick={handleLogout} className={`${linkClasses} w-full text-red-600 hover:bg-red-50`}>
                                 <FiLogOut className="mr-3" /> Logout
                             </button>

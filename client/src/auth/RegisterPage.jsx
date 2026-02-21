@@ -79,7 +79,7 @@ const RegisterPage = () => {
             }));
         }
     };
-    
+
     // Handles file inputs
     const handleFileChange = (e) => {
         const { name, files } = e.target;
@@ -96,12 +96,12 @@ const RegisterPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
-        
+
         if (formData.password !== formData.confirmPassword) {
             setError("Passwords do not match.");
             return;
         }
-        
+
         setLoading(true);
 
         // Use FormData to handle both file uploads and text data.
@@ -162,7 +162,7 @@ const RegisterPage = () => {
                 <div className="bg-white py-8 px-4 shadow-xl rounded-2xl sm:px-10">
                     <form className="space-y-8 divide-y divide-gray-200" onSubmit={handleSubmit}>
                         {error && <p className="text-center text-sm text-red-600 bg-red-100 p-3 rounded-lg mb-4">{error}</p>}
-                        
+
                         {/* --- Personal Information Section --- */}
                         <div className="space-y-6 pt-8 text-lg font-bold">
                             <div>
@@ -195,26 +195,26 @@ const RegisterPage = () => {
 
                         {/* --- Academic Details Section --- */}
                         <div className="space-y-6 pt-8">
-                             <div><h3 className="text-lg leading-6 font-medium text-gray-900">Academic Details</h3></div>
-                             <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                            <div><h3 className="text-lg leading-6 font-medium text-gray-900">Academic Details</h3></div>
+                            <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                                 <div className="sm:col-span-3"><label htmlFor="qualification" className="block text-sm font-medium text-gray-700">Highest Qualification</label><select id="qualification" name="academics.qualification" value={formData.academics.qualification} onChange={handleChange} className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md"><option>Select</option><option>10th</option><option>12th</option><option>Diploma</option><option>Graduation</option></select></div>
                                 <div className="sm:col-span-3"><label htmlFor="stream" className="block text-sm font-medium text-gray-700">Stream</label><input type="text" name="academics.stream" id="stream" value={formData.academics.stream} onChange={handleChange} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm" /></div>
                                 <div className="sm:col-span-6"><label htmlFor="collegeSchoolName" className="block text-sm font-medium text-gray-700">College/School Name</label><input type="text" name="academics.collegeSchoolName" id="collegeSchoolName" value={formData.academics.collegeSchoolName} onChange={handleChange} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm" /></div>
-                             </div>
+                            </div>
                         </div>
 
                         {/* --- Documents Upload Section --- */}
                         <div className="space-y-6 pt-8">
-                             <div>
+                            <div>
                                 <h3 className="text-lg leading-6 font-medium text-gray-900">Documents Upload</h3>
                                 <p className="mt-1 text-sm text-gray-500">Please upload the required documents.</p>
-                             </div>
-                             <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-                                <div className="sm:col-span-3"><label htmlFor="photo" className="block text-sm font-medium text-gray-700">Photo</label><input type="file" name="documents.photo" id="photo" onChange={handleFileChange} className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"/></div>
-                                <div className="sm:col-span-3"><label htmlFor="aadhaarCard" className="block text-sm font-medium text-gray-700">Aadhaar Card</label><input type="file" name="documents.aadhaarCard" id="aadhaarCard" onChange={handleFileChange} className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"/></div>
-                                <div className="sm:col-span-3"><label htmlFor="marksheet10th" className="block text-sm font-medium text-gray-700">10th Marksheet</label><input type="file" name="documents.marksheet10th" id="marksheet10th" onChange={handleFileChange} className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"/></div>
-                                <div className="sm:col-span-3"><label htmlFor="marksheet12th" className="block text-sm font-medium text-gray-700">12th Marksheet</label><input type="file" name="documents.marksheet12th" id="marksheet12th" onChange={handleFileChange} className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"/></div>
-                             </div>
+                            </div>
+                            <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                                <div className="sm:col-span-3"><label htmlFor="photo" className="block text-sm font-medium text-gray-700">Photo</label><input type="file" name="documents.photo" id="photo" onChange={handleFileChange} className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100" /></div>
+                                <div className="sm:col-span-3"><label htmlFor="aadhaarCard" className="block text-sm font-medium text-gray-700">Aadhaar Card</label><input type="file" name="documents.aadhaarCard" id="aadhaarCard" onChange={handleFileChange} className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100" /></div>
+                                <div className="sm:col-span-3"><label htmlFor="marksheet10th" className="block text-sm font-medium text-gray-700">10th Marksheet</label><input type="file" name="documents.marksheet10th" id="marksheet10th" onChange={handleFileChange} className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100" /></div>
+                                <div className="sm:col-span-3"><label htmlFor="marksheet12th" className="block text-sm font-medium text-gray-700">12th Marksheet</label><input type="file" name="documents.marksheet12th" id="marksheet12th" onChange={handleFileChange} className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100" /></div>
+                            </div>
                         </div>
 
                         <div className="pt-5">

@@ -1,8 +1,8 @@
-import React, { useState, useEffect , useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify'; // Import toast
-import { useAuth } from '../context/AuthContext'; 
+import { useAuth } from '../context/AuthContext';
 
 
 // Helper function to format dates nicely
@@ -26,7 +26,7 @@ const DetailItem = ({ label, value }) => (
 
 const ScholarshipDetailPage = () => {
     const { id } = useParams(); // Gets the ':id' from the URL
-   const { user, token, refetchUser } = useAuth();
+    const { user, token, refetchUser } = useAuth();
     const [scholarship, setScholarship] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -60,7 +60,7 @@ const ScholarshipDetailPage = () => {
         };
 
         fetchScholarshipDetails();
-    }, [id , user]); // Re-run this effect if the ID in the URL changes
+    }, [id, user]); // Re-run this effect if the ID in the URL changes
 
     const handleApply = async () => {
         if (!user) {
@@ -73,13 +73,13 @@ const ScholarshipDetailPage = () => {
             const config = {
                 headers: { Authorization: `Bearer ${token}` },
             };
-            
+
             await axios.post(`/api/users/apply/${id}`, {}, config);
-            
+
             toast.success("Applied Successfully!");
             setIsApplied(true);
 
-            await refetchUser(); 
+            await refetchUser();
         } catch (err) {
             const message = err.response?.data?.message || "Application failed. Please try again.";
             toast.error(message);
@@ -121,45 +121,45 @@ const ScholarshipDetailPage = () => {
                             <h2 className="text-xl font-bold">Description</h2>
                             <p>{scholarship.description}</p>
                         </div>
-                        
+
                         {/* Details Section */}
                         <div className="mt-8 border-t border-gray-200">
-                           <dl className="divide-y divide-gray-200">
+                            <dl className="divide-y divide-gray-200">
                                 {/* 4. Category */}
                                 <DetailItem label="Category" value={scholarship.category} />
-                                
+
                                 {/* 5. Start and End Date */}
                                 <DetailItem label="Application Start Date" value={formatDate(scholarship.start_date)} />
                                 <DetailItem label="Application End Date" value={formatDate(scholarship.end_date)} />
-                                
+
                                 {/* 6. Gender */}
                                 <DetailItem label="Gender Eligibility" value={scholarship.gender} />
-                                
+
                                 {/* Other useful details from your schema */}
                                 <DetailItem label="Education Level" value={scholarship.educationLevel} />
                                 <DetailItem label="Applicable State" value={scholarship.state} />
                                 <DetailItem label="Applicable Course" value={scholarship.course} />
                                 <DetailItem label="Award" value={scholarship.award} />
-                           </dl>
+                            </dl>
                         </div>
 
                         {/* Action Button */}
                         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <Link 
-                                to="https://www.buddy4study.com/scholarships" 
-                                target="_blank" 
+                            <Link
+                                to="https://www.buddy4study.com/scholarships"
+                                target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-full sm:w-auto text-center bg-gray-100 text-gray-800 font-bold px-8 py-3 rounded-lg border border-gray-300 hover:bg-gray-200 transition-colors"
                             >
                                 Visit Official Site
                             </Link>
-                            
-                            <button 
+
+                            <button
                                 onClick={handleApply}
                                 disabled={isApplying || isApplied}
                                 className={`w-full sm:w-auto text-center font-bold px-8 py-3 rounded-lg transition-colors shadow-md disabled:cursor-not-allowed disabled:opacity-60
-                                    ${isApplied 
-                                        ? 'bg-green-200 text-green-800' 
+                                    ${isApplied
+                                        ? 'bg-green-200 text-green-800'
                                         : 'bg-green-600 text-white hover:bg-green-700'
                                     }
                                 `}
