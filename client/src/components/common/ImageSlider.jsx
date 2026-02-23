@@ -7,7 +7,8 @@ const images = [
     "/i1.webp",
     "/i2.webp",
     "/i3.webp",
-    "/i4.webp"
+    "/i4.webp",
+    "/i5.webp"
 ];
 
 const sliderBg = "linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%)";

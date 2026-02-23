@@ -11,6 +11,7 @@ import Footer, { ContactUsPage } from './layout/Footer';
 import TermsPage from './pages/TermsPage';
 import FAQPage from './pages/FAQPage';
 import AboutUsPage from './pages/AboutUsPage';
+import AwardedScholarshipsPage from './pages/AwardedScholarshipsPage';
 import DashboardLayout from './layout/DashboardLayout';
 import AdminLayout from './layout/AdminLayout';
 
@@ -82,6 +83,7 @@ const App = () => {
                         <Route path="/dashboard" element={<DashboardLayout />}>
                             <Route index element={<DashboardPage />} />
                             <Route path="my-applications" element={<MyApplications />} />
+                            <Route path="awarded" element={<AwardedScholarshipsPage />} />
                             <Route path="settings" element={<SettingsPage />} />
                             {/* <Route path="awarded" element={<Awarded />} /> */}
                             {/* Add routes for 'awarded' and 'settings' later */}
