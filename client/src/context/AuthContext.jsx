@@ -17,13 +17,14 @@ export const AuthProvider = ({ children }) => {
             if (token) {
                 // Set the token in axios headers for all subsequent requests
                 axios.defaults.headers.common['x-auth-token'] = token;
+                axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
                 try {
                     // TODO: Create this backend route later to get user data
                     const res = await axios.get('/api/auth/user');
                     setUser(res.data);
                     // For now, we'll just simulate setting a user
                     // setUser({ name: 'Kunj' });
-                    
+
                 } catch (err) {
                     console.error('Auth Error:', err);
                     // If token is invalid, remove it
@@ -31,6 +32,7 @@ export const AuthProvider = ({ children }) => {
                     setToken(null);
                     setUser(null);
                     axios.defaults.headers.common['x-auth-token'] = null;
+                    axios.defaults.headers.common['Authorization'] = null;
                 }
             }
             setLoading(false);
@@ -52,7 +54,7 @@ export const AuthProvider = ({ children }) => {
             const res = await axios.post('/api/auth/login', body, config);
             localStorage.setItem('token', res.data.token);
             setToken(res.data.token);
-            
+
             return { success: true };
         } catch (err) {
             console.error('Login failed:', err.response.data.message);
@@ -66,6 +68,19 @@ export const AuthProvider = ({ children }) => {
         setToken(null);
         setUser(null);
         axios.defaults.headers.common['x-auth-token'] = null;
+        axios.defaults.headers.common['Authorization'] = null;
+    };
+
+    // Refetch user function
+    const refetchUser = async () => {
+        if (token) {
+            try {
+                const res = await axios.get('/api/auth/user');
+                setUser(res.data);
+            } catch (err) {
+                console.error('Refetch Error:', err);
+            }
+        }
     };
 
     const authContextValue = {
@@ -74,7 +89,8 @@ export const AuthProvider = ({ children }) => {
         user,
         loading,
         login,
-        logout
+        logout,
+        refetchUser
     };
 
     return (

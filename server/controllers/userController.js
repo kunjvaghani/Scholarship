@@ -10,16 +10,6 @@ exports.getMe = async (req, res) => {
 
 // @desc    Get applications for the current user
 // @route   GET /api/users/my-applications
-// exports.getMyApplications = async (req, res) => {
-//     try {
-//         const user = await User.findById(req.user.id).populate('appliedScholarships.scholarshipId');
-//         res.status(200).json(user.appliedScholarships);
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ message: 'Server error' });
-//     }
-// };
-
 exports.getMyApplications = async (req, res) => {
     try {
         const user = await User.findById(req.user.id).populate({
@@ -70,5 +60,46 @@ exports.applyToScholarship = async (req, res) => {
     } catch (error) {
         console.error('Application Error:', error);
         res.status(500).json({ message: 'Server error during application.' });
+    }
+};
+
+// @desc    Update user profile
+// @route   PUT /api/users/profile
+exports.updateProfile = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const updates = { ...req.body };
+
+        // Parse nested JSON strings (sent via FormData)
+        if (updates.address && typeof updates.address === 'string') updates.address = JSON.parse(updates.address);
+        if (updates.guardian && typeof updates.guardian === 'string') updates.guardian = JSON.parse(updates.guardian);
+        if (updates.academics && typeof updates.academics === 'string') updates.academics = JSON.parse(updates.academics);
+
+        // Handle file uploads if any
+        if (req.files && Object.keys(req.files).length > 0) {
+            const documentPaths = {};
+            Object.keys(req.files).forEach(field => {
+                documentPaths[field] = req.files[field][0].path;
+            });
+
+            // Get current user to merge existing document paths
+            const user = await User.findById(userId);
+            updates.documents = { ...user.documents, ...documentPaths };
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            { $set: updates },
+            { new: true, runValidators: true }
+        ).select('-password');
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: 'User not found.' });
+        }
+
+        res.status(200).json(updatedUser);
+    } catch (error) {
+        console.error('Update Profile Error:', error);
+        res.status(500).json({ message: 'Server error while updating profile.' });
     }
 };

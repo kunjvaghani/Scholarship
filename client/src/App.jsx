@@ -26,6 +26,7 @@ import AdminUserDetail from './admin/AdminUserDetail';
 // Import page components
 import DashboardPage from './pages/DashBoardPage';
 import ScholarshipDetailPage from './pages/ScholarshipDetailPage';
+import SettingsPage from './pages/SettingsPage';
 
 // Import services
 import Services from "./services/StudentServicesPage";
@@ -79,6 +80,8 @@ const App = () => {
                             <Route path="my-applications" element={<MyApplications />} />
                             {/* Add routes for 'awarded' and 'settings' later */}
                         </Route>
+
+                        <Route path="/settings" element={<SettingsPage />} />
 
                         <Route element={<AdminRoute />}>
                             <Route path="/admin" element={<AdminLayout />}>
