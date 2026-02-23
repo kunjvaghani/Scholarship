@@ -108,40 +108,42 @@ const NavBar = () => {
                             {item.label}
                         </Link>
                     ))}
-                    {/* Explore Dropdown */}
-                    <div className="relative" ref={exploreMenuRef}>
-                        <button
-                            onClick={() => setExploreOpen((v) => !v)}
-                            className="flex items-center text-white font-medium px-3 py-2 rounded-md transition duration-200 hover:text-white cursor-pointer text-lg"
-                        >
-                            Explore
-                            <svg
-                                className={`ml-1 w-4 h-4 transition-transform duration-200 ${exploreOpen ? 'transform rotate-180' : ''}`}
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                viewBox="0 0 24 24"
+                    {/* Explore Dropdown - Only show when not authenticated since it only contains 'Register' */}
+                    {!isAuthenticated && (
+                        <div className="relative" ref={exploreMenuRef}>
+                            <button
+                                onClick={() => setExploreOpen((v) => !v)}
+                                className="flex items-center text-white font-medium px-3 py-2 rounded-md transition duration-200 hover:text-white cursor-pointer text-lg"
                             >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M19 9l-7 7-7-7"
-                                />
-                            </svg>
-                        </button>
-                        {exploreOpen && (
-                            <div
-                                className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl z-30 flex flex-col animate-fade-in"
-                            >
-                                <Link
-                                    to="/register"
-                                    className="px-5 py-3 text-gray-800 hover:text-green-700 hover:bg-gray-50 rounded-md transition duration-150 cursor-pointer"
+                                Explore
+                                <svg
+                                    className={`ml-1 w-4 h-4 transition-transform duration-200 ${exploreOpen ? 'transform rotate-180' : ''}`}
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    viewBox="0 0 24 24"
                                 >
-                                    Register
-                                </Link>
-                            </div>
-                        )}
-                    </div>
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M19 9l-7 7-7-7"
+                                    />
+                                </svg>
+                            </button>
+                            {exploreOpen && (
+                                <div
+                                    className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl z-30 flex flex-col animate-fade-in"
+                                >
+                                    <Link
+                                        to="/register"
+                                        className="px-5 py-3 text-gray-800 hover:text-green-700 hover:bg-gray-50 rounded-md transition duration-150 cursor-pointer"
+                                    >
+                                        Register
+                                    </Link>
+                                </div>
+                            )}
+                        </div>
+                    )}
                 </div>
 
                 {/* Right: Toggle + Login/User */}
