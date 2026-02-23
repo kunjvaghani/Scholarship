@@ -83,18 +83,6 @@ const ContactUsPage = () => {
 
 
 
-const TermsAndConditionsPage = () => (
-    <div className="animate-fade-in-up bg-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto prose prose-lg text-gray-600">
-            <h1 className="text-gray-900">Terms and Conditions</h1>
-            <p>Welcome to our Scholarship Portal. By using this website, you agree to comply with and be bound by the following terms and conditions.</p>
-            <h2>1. User Agreement</h2>
-            <p>Your use of this website is subject to these terms. If you disagree with any part of these terms and conditions, please do not use our website.</p>
-            <h2>1. User Agreement</h2>
-            <p>Your use of this website is subject to these terms. If you disagree with any part of these terms and conditions, please do not use our website.</p>
-        </div>
-    </div>
-);
 
 const Footer = () => {
     const socialLinks = [
@@ -231,5 +219,5 @@ const Footer = () => {
     );
 };
 
-export { ContactUsPage, TermsAndConditionsPage };
+export { ContactUsPage };
 export default Footer;

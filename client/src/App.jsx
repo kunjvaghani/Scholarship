@@ -7,7 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 // Import your existing page components
 // Import layout components
 import NavBar from './layout/NavBar';
-import Footer, { ContactUsPage, TermsAndConditionsPage } from './layout/Footer';
+import Footer, { ContactUsPage } from './layout/Footer';
+import TermsPage from './pages/TermsPage';
 import FAQPage from './pages/FAQPage';
 import AboutUsPage from './pages/AboutUsPage';
 import DashboardLayout from './layout/DashboardLayout';
@@ -71,7 +72,7 @@ const App = () => {
                         <Route path="/about" element={<AboutUsPage />} />
                         <Route path="/contact" element={<ContactUsPage />} />
                         <Route path="/faq" element={<FAQPage />} />
-                        <Route path="/terms" element={<TermsAndConditionsPage />} />
+                        <Route path="/terms" element={<TermsPage />} />
                         <Route path="/create-scholarship" element={<CreateScholarship />} />
                         <Route path="/services" element={<Services />}></Route>
                         <Route path="/forgot-password" element={<ForgotPasswordPage />}> </Route>
