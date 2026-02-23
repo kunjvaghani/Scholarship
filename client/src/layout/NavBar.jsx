@@ -169,19 +169,23 @@ const NavBar = () => {
                                     Login
                                 </Link>
                             ) : (
-                                <div className="relative" ref={userMenuRef}>
+                                <div className="relative group" ref={userMenuRef}>
                                     <button
                                         onClick={() => setUserMenuOpen((v) => !v)}
                                         className="flex items-center justify-center w-10 h-10 rounded-full bg-white text-green-700 hover:shadow-lg transition cursor-pointer"
                                     >
                                         <UserIcon />
                                     </button>
+                                    {/* Hover Tooltip */}
+                                    <span className="absolute top-full right-0 mt-2 w-max opacity-0 group-hover:opacity-100 bg-white text-green-700 px-3 py-1 rounded shadow-lg transition-opacity duration-200 text-sm whitespace-nowrap z-40 font-bold border border-green-100">
+                                        Hello, {user?.firstName || 'User'}
+                                    </span>
                                     {userMenuOpen && (
                                         <div
                                             className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl z-30 animate-fade-in"
                                         >
                                             <div className="px-4 py-3 border-b border-gray-200">
-                                                <p className="font-medium text-sm text-gray-800">Hello, {user?.name}</p>
+                                                <p className="font-medium text-sm text-gray-800">Hello, {user?.firstName} {user?.lastName}</p>
                                             </div>
                                             <Link
                                                 to="/dashboard"
