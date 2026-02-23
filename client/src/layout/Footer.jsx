@@ -15,34 +15,6 @@ const PhoneIcon = () => (
     <svg className="w-6 h-6 mr-3 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
 );
 
-const AboutUsPage = () => (
-    <div className="animate-fade-in-up bg-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-            <div className="text-center">
-                <h2 className="text-lg font-semibold text-green-600 tracking-wide uppercase">About Us</h2>
-                <p className="mt-2 text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
-                    Empowering Students, Shaping Futures
-                </p>
-                <p className="mt-5 max-w-3xl mx-auto text-xl text-gray-500">
-                    Our mission is to bridge the gap between students and the scholarships that can change their lives. We believe every student deserves the opportunity to pursue their dreams without financial barriers.
-                </p>
-            </div>
-            <div className="mt-20">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <h3 className="text-3xl font-extrabold text-gray-900 mb-4">Our Vision</h3>
-                        <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                            We envision a world where education is accessible to all. Our platform is a comprehensive, one-stop solution for students seeking financial aid and for organizations looking to make a meaningful impact.
-                        </p>
-                    </div>
-                    <div className="flex justify-center">
-                        <img className="rounded-2xl shadow-2xl w-full max-w-md" src="https://placehold.co/600x400/e6f7f6/15803d?text=Our+Vision" alt="Our Vision" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-);
 
 
 const ContactUsPage = () => {
@@ -342,5 +314,5 @@ const Footer = () => {
     );
 };
 
-export { AboutUsPage, ContactUsPage, FAQPage, TermsAndConditionsPage };
+export { ContactUsPage, FAQPage, TermsAndConditionsPage };
 export default Footer;
