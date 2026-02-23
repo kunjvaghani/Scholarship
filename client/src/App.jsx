@@ -7,7 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 // Import your existing page components
 // Import layout components
 import NavBar from './layout/NavBar';
-import Footer, { ContactUsPage, FAQPage, TermsAndConditionsPage } from './layout/Footer';
+import Footer, { ContactUsPage, TermsAndConditionsPage } from './layout/Footer';
+import FAQPage from './pages/FAQPage';
 import AboutUsPage from './pages/AboutUsPage';
 import DashboardLayout from './layout/DashboardLayout';
 import AdminLayout from './layout/AdminLayout';

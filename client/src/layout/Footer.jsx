@@ -82,89 +82,6 @@ const ContactUsPage = () => {
 
 
 
-const FAQPage = () => {
-    const faqs = [
-        {
-            q: "What is this Scholarship Portal?",
-            a: "It is a one-stop platform for students to find and apply for scholarships from various organizations."
-        },
-        {
-            q: "How does this portal help citizens?",
-            a: "It simplifies the process of finding financial aid, making education more accessible to everyone."
-        },
-        {
-            q: "Can I apply for scholarships through this portal?",
-            a: "Yes, our platform provides a streamlined application process for many of the listed scholarships."
-        },
-    ];
-
-    const [openIndex, setOpenIndex] = useState(null);
-
-    const toggleFAQ = (index) => {
-        setOpenIndex(prev => (prev === index ? null : index));
-    };
-
-    return (
-        <div
-            className="animate-fade-in-up"
-            style={{ backgroundImage: 'linear-gradient(135deg, #f0fdf4 0%, #e6f7f6 100%)' }}
-        >
-            <div className="max-w-7xl mx-auto py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                    <h2 className="text-lg font-semibold text-green-600 tracking-wide uppercase">FAQs</h2>
-                    <h1 className="mt-2 text-4xl font-bold text-gray-900">Frequently Asked Questions</h1>
-                    <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-                        Find answers to common questions about our scholarship portal and how it helps students.
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    {/* Left Image */}
-                    <div className="flex justify-center">
-                        <img
-                            src="https://placehold.co/400x350/22c55e/FFFFFF?text=?"
-                            alt="FAQ Visual"
-                            className="w-full max-w-sm rounded-2xl shadow-xl"
-                        />
-                    </div>
-
-                    {/* Right FAQ Accordion */}
-                    <div>
-                        <dl className="space-y-6">
-                            {faqs.map((faq, index) => (
-                                <div key={index} className="border-b border-gray-200 pb-4">
-                                    <button
-                                        onClick={() => toggleFAQ(index)}
-                                        className="w-full flex justify-between items-center text-left text-gray-800 font-medium text-lg focus:outline-none"
-                                    >
-                                        <span>{faq.q}</span>
-                                        <svg
-                                            className={`w-6 h-6 transform transition-transform duration-300 ${openIndex === index ? '-rotate-180 text-green-600' : 'rotate-0'
-                                                }`}
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            stroke="currentColor"
-                                        >
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                                        </svg>
-                                    </button>
-
-                                    <div
-                                        className={`overflow-hidden transition-all duration-500 ease-in-out ${openIndex === index ? 'max-h-40 mt-3' : 'max-h-0'
-                                            }`}
-                                    >
-                                        <p className="text-gray-600">{faq.a}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </dl>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
 
 const TermsAndConditionsPage = () => (
     <div className="animate-fade-in-up bg-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
@@ -314,5 +231,5 @@ const Footer = () => {
     );
 };
 
-export { ContactUsPage, FAQPage, TermsAndConditionsPage };
+export { ContactUsPage, TermsAndConditionsPage };
 export default Footer;
