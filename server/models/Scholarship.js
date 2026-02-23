@@ -20,12 +20,10 @@ const scholarshipSchema = new Schema({
     },
     category: {
         type: String,
-        enum: ['General', 'EWS', 'OBC', 'SC', 'ST'],
         default: 'General'
     },
     educationLevel: {
         type: String,
-        enum: ['Class 9-10', 'Class 11-12', 'Diploma', 'Undergraduate', 'Postgraduate', 'PhD'],
         required: true
     },
     state: {
@@ -34,25 +32,26 @@ const scholarshipSchema = new Schema({
     },
     course: {
         type: String,
-        enum: ['Engineering', 'Medical', 'Arts', 'Science', 'Commerce', 'Law', 'Management', 'General'],
         default: 'General'
     },
-    start_date: {
+    startDate: {
         type: Date,
         required: true
     },
-    end_date: {
+    endDate: {
         type: Date,
         required: true
     },
     gender: {
         type: String,
-        enum: ['Male', 'Female', 'All'],
         default: 'All'
     },
     award: {
         type: String,
         required: true // e.g., "₹50,000", "Up to ₹1,00,000"
+    },
+    imageUrl: {
+        type: String
     }
 }, {
     timestamps: true // Adds createdAt and updatedAt fields

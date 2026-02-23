@@ -4,7 +4,7 @@ const Scholarship = require('../models/Scholarship');
 exports.getAllScholarships = async (req, res) => {
     try {
         // Find all scholarships and sort them by the nearest deadline
-        const scholarships = await Scholarship.find().sort({ applicationDeadline: 1 });
+        const scholarships = await Scholarship.find().sort({ endDate: 1 });
         res.status(200).json(scholarships);
     } catch (error) {
         console.error('Error fetching scholarships:', error);
