@@ -110,6 +110,18 @@ const ScholarshipDetailPage = () => {
             <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
                 <div className="bg-white shadow-xl rounded-lg overflow-hidden">
                     <div className="px-6 py-8">
+                        {/* 0. Scholarship Image */}
+                        {scholarship.imageUrl && (
+                            <div className="mb-8 overflow-hidden rounded-xl shadow-md border border-gray-100">
+                                <img
+                                    src={scholarship.imageUrl}
+                                    alt={scholarship.title}
+                                    className="w-full h-64 object-cover"
+                                    onError={(e) => { e.target.style.display = 'none'; }}
+                                />
+                            </div>
+                        )}
+
                         {/* 1. Name of the scholarship */}
                         <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">{scholarship.title}</h1>
 
@@ -129,8 +141,8 @@ const ScholarshipDetailPage = () => {
                                 <DetailItem label="Category" value={scholarship.category} />
 
                                 {/* 5. Start and End Date */}
-                                <DetailItem label="Application Start Date" value={formatDate(scholarship.start_date)} />
-                                <DetailItem label="Application End Date" value={formatDate(scholarship.end_date)} />
+                                <DetailItem label="Application Start Date" value={formatDate(scholarship.startDate)} />
+                                <DetailItem label="Application End Date" value={formatDate(scholarship.endDate)} />
 
                                 {/* 6. Gender */}
                                 <DetailItem label="Gender Eligibility" value={scholarship.gender} />

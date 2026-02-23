@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 // --- Helper Components ---
-const imageUrl = "../public/s1.jpg"
+// const imageUrlFallback = "../public/s1.jpg"
 // Collapsible Filter Section for the Sidebar
-const FilterSection = ({ title, options, filterKey, handleFilterChange }) => {
+const FilterSection = ({ title, options, filterKey, selectedValues, handleFilterChange }) => {
     const [isOpen, setIsOpen] = useState(true);
 
     return (
@@ -19,6 +19,7 @@ const FilterSection = ({ title, options, filterKey, handleFilterChange }) => {
                     <label key={option} className="flex items-center space-x-3 cursor-pointer group">
                         <input
                             type="checkbox"
+                            checked={selectedValues.includes(option)}
                             className="h-5 w-5 rounded border-gray-300 text-green-600 focus:ring-green-500"
                             onChange={(e) => handleFilterChange(filterKey, option, e.target.checked)}
                         />
@@ -49,12 +50,12 @@ const ScholarshipCard = ({ scholarship }) => {
         return { text: `${diffDays} days left`, color: "bg-yellow-100 text-yellow-800" };
     };
 
-    const remaining = calculateRemainingDays(scholarship.end_date);
+    const remaining = calculateRemainingDays(scholarship.endDate);
 
     return (
         <Link to={`/scholarship/${scholarship._id}`} className="block bg-white rounded-2xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border border-gray-100">
             <div className="relative">
-                <img src={imageUrl} alt={scholarship.title} className="w-full h-40 object-cover"
+                <img src={scholarship.imageUrl || 'https://placehold.co/600x400/e6f7f6/15803d?text=Scholarship'} alt={scholarship.title} className="w-full h-40 object-cover"
                     onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/600x400/e6f7f6/15803d?text=Scholarship'; }}
                 />
                 <div className={`absolute top-3 right-3 text-sm font-bold px-3 py-1 rounded-full ${remaining.color}`}>
@@ -70,8 +71,8 @@ const ScholarshipCard = ({ scholarship }) => {
                         <p className="text-lg font-bold text-green-700">{scholarship.award}</p>
                     </div>
                     <div className="text-right">
-                        <p className="text-sm font-semibold text-gray-600">Eligibility</p>
-                        <p className="text-base text-gray-800 truncate max-w-[120px]">{scholarship.eligibility}</p>
+                        <p className="text-sm font-semibold text-gray-600">Level</p>
+                        <p className="text-base text-gray-800 truncate max-w-[120px]">{scholarship.educationLevel}</p>
                     </div>
                 </div>
             </div>
@@ -93,6 +94,13 @@ const StudentServicesPage = () => {
         course: [],
         category: [],
     });
+    const [filterOptions, setFilterOptions] = useState({
+        educationLevel: [],
+        state: [],
+        gender: [],
+        course: [],
+        category: [],
+    });
 
     // Fetch scholarships from the database on component mount
     useEffect(() => {
@@ -101,6 +109,17 @@ const StudentServicesPage = () => {
                 setLoading(true);
                 const response = await axios.get('/api/scholarships');
                 setScholarships(response.data);
+
+                // Extract unique filter options from the data
+                const data = response.data;
+                const options = {
+                    educationLevel: [...new Set(data.map(item => item.educationLevel).filter(Boolean))].sort(),
+                    state: [...new Set(data.map(item => item.state).filter(Boolean))].sort(),
+                    gender: [...new Set(data.map(item => item.gender).filter(Boolean))].sort(),
+                    course: [...new Set(data.map(item => item.course).filter(Boolean))].sort(),
+                    category: [...new Set(data.map(item => item.category).filter(Boolean))].sort(),
+                };
+                setFilterOptions(options);
             } catch (error) {
                 console.error("Failed to fetch scholarships:", error);
             } finally {
@@ -118,13 +137,12 @@ const StudentServicesPage = () => {
 
         // 1. Filter by Status (Live, Upcoming, Closed)
         if (activeStatus === 'live') {
-            result = result.filter(s => new Date(s.end_date) >= today);
+            result = result.filter(s => s.endDate && new Date(s.endDate) >= today);
         } else if (activeStatus === 'upcoming') {
-            // Placeholder: Assumes scholarships starting in the future have a 'startDate' field.
-            // For now, we'll treat 'live' and 'upcoming' as the same.
-            result = result.filter(s => new Date(s.end_date) > today);
+            // Check if it hasn't started yet
+            result = result.filter(s => s.startDate && new Date(s.startDate) > today);
         } else if (activeStatus === 'closed') {
-            result = result.filter(s => new Date(s.end_date) < today);
+            result = result.filter(s => s.endDate && new Date(s.endDate) < today);
         }
 
         // --- FIX: IMPLEMENTED FUNCTIONAL SIDEBAR FILTERING ---
@@ -155,12 +173,17 @@ const StudentServicesPage = () => {
         });
     };
 
-    // --- Filter Options (These should ideally come from your DB) ---
-    const educationLevels = ["10th", "12th", "Undergraduate", "Postgraduate"];
-    const states = ["Gujarat", "Maharashtra", "All India", "Rajasthan"];
-    const genders = ["Male", "Female", "All"];
-    const courses = ["Engineering", "Medical", "Arts", "Commerce", "Science"];
-    const categories = ["General", "EWS", "OBC", "SC", "ST"];
+    const clearFilters = () => {
+        setFilters({
+            educationLevel: [],
+            state: [],
+            gender: [],
+            course: [],
+            category: [],
+        });
+        // Note: Checkboxes won't visually uncheck unless we make them controlled by the filters state.
+        // Let's ensure the checkboxes are controlled.
+    };
 
     return (
         <div className="w-full font-sans" style={{ backgroundImage: 'linear-gradient(135deg, #f0fdf4 0%, #e6f7f6 100%)' }}>
@@ -169,12 +192,20 @@ const StudentServicesPage = () => {
 
                     {/* --- Left Sidebar --- */}
                     <aside className="lg:col-span-1 bg-white p-6 rounded-2xl shadow-lg h-fit">
-                        <h2 className="text-2xl font-extrabold text-gray-800 mb-4">Filters</h2>
-                        <FilterSection title="Educational Level" options={educationLevels} filterKey="educationLevel" handleFilterChange={handleFilterChange} />
-                        <FilterSection title="State" options={states} filterKey="state" handleFilterChange={handleFilterChange} />
-                        <FilterSection title="Gender" options={genders} filterKey="gender" handleFilterChange={handleFilterChange} />
-                        <FilterSection title="Course" options={courses} filterKey="course" handleFilterChange={handleFilterChange} />
-                        <FilterSection title="Category" options={categories} filterKey="category" handleFilterChange={handleFilterChange} />
+                        <div className="flex justify-between items-center mb-4">
+                            <h2 className="text-2xl font-extrabold text-gray-800">Filters</h2>
+                            <button
+                                onClick={clearFilters}
+                                className="text-sm font-semibold text-green-600 hover:text-green-800 transition-colors"
+                            >
+                                Clear All
+                            </button>
+                        </div>
+                        <FilterSection title="Educational Level" options={filterOptions.educationLevel} filterKey="educationLevel" selectedValues={filters.educationLevel} handleFilterChange={handleFilterChange} />
+                        <FilterSection title="State" options={filterOptions.state} filterKey="state" selectedValues={filters.state} handleFilterChange={handleFilterChange} />
+                        <FilterSection title="Gender" options={filterOptions.gender} filterKey="gender" selectedValues={filters.gender} handleFilterChange={handleFilterChange} />
+                        <FilterSection title="Course" options={filterOptions.course} filterKey="course" selectedValues={filters.course} handleFilterChange={handleFilterChange} />
+                        <FilterSection title="Category" options={filterOptions.category} filterKey="category" selectedValues={filters.category} handleFilterChange={handleFilterChange} />
                     </aside>
 
                     {/* --- Right Main Content --- */}
@@ -188,8 +219,8 @@ const StudentServicesPage = () => {
                                     key={status}
                                     onClick={() => setActiveStatus(status)}
                                     className={`px-6 py-3 font-bold text-lg rounded-full transition-all duration-300 ${activeStatus === status
-                                            ? 'bg-green-600 text-white shadow-md'
-                                            : 'bg-white text-gray-600 hover:bg-green-50'
+                                        ? 'bg-green-600 text-white shadow-md'
+                                        : 'bg-white text-gray-600 hover:bg-green-50'
                                         }`}
                                 >
                                     {status.charAt(0).toUpperCase() + status.slice(1)} Scholarships
