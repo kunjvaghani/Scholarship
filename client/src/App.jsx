@@ -11,6 +11,7 @@ import Footer, { ContactUsPage } from './layout/Footer';
 import TermsPage from './pages/TermsPage';
 import FAQPage from './pages/FAQPage';
 import AboutUsPage from './pages/AboutUsPage';
+import NoticePage from './pages/NoticePage';
 import AwardedScholarshipsPage from './pages/AwardedScholarshipsPage';
 import DashboardLayout from './layout/DashboardLayout';
 import AdminLayout from './layout/AdminLayout';
@@ -73,6 +74,7 @@ const App = () => {
                         <Route path="/about" element={<AboutUsPage />} />
                         <Route path="/contact" element={<ContactUsPage />} />
                         <Route path="/faq" element={<FAQPage />} />
+                        <Route path="/notice" element={<NoticePage />} />
                         <Route path="/terms" element={<TermsPage />} />
                         <Route path="/create-scholarship" element={<CreateScholarship />} />
                         <Route path="/services" element={<Services />}></Route>
