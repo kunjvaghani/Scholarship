@@ -39,7 +39,7 @@ const ContactUsPage = () => {
             <div className="max-w-7xl mx-auto py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-lg font-semibold text-green-600 tracking-wide uppercase">Contact Us</h2>
-                    <p className="mt-2 text-4xl font-extrabold text-gray-900">We'd love to hear from you</p>
+                    <p className="mt-2 text-4xl font-bold text-gray-900">We'd love to hear from you</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                     <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-100">
@@ -112,7 +112,7 @@ const FAQPage = () => {
             <div className="max-w-7xl mx-auto py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-lg font-semibold text-green-600 tracking-wide uppercase">FAQs</h2>
-                    <h1 className="mt-2 text-4xl font-extrabold text-gray-900">Frequently Asked Questions</h1>
+                    <h1 className="mt-2 text-4xl font-bold text-gray-900">Frequently Asked Questions</h1>
                     <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
                         Find answers to common questions about our scholarship portal and how it helps students.
                     </p>
@@ -212,7 +212,7 @@ const Footer = () => {
 
                     {/* Column 1: Branding & Social */}
                     <div className="footer-col">
-                        <h2 className="text-gray-800 text-3xl font-bold mb-4">
+                        <h2 className="text-gray-800 text-3xl font-extrabold mb-4">
                             <span className="text-green-600">Scholarship</span>Portal
                         </h2>
                         <div className="pl-5 justify-center items-center">

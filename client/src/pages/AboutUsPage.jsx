@@ -14,8 +14,8 @@ const AboutUsPage = () => {
                 </div>
 
                 <div className="max-w-7xl mx-auto text-center relative z-10 animate-fade-in-up">
-                    <h2 className="text-green-600 font-black uppercase tracking-[0.3em] text-sm mb-6 drop-shadow-sm">About Scholarship Portal</h2>
-                    <h1 className="text-5xl sm:text-7xl font-black text-gray-900 leading-tight tracking-tight">
+                    <h2 className="text-green-600 font-bold uppercase tracking-[0.3em] text-sm mb-6 drop-shadow-sm">About Scholarship Portal</h2>
+                    <h1 className="text-5xl sm:text-7xl font-extrabold text-gray-900 leading-tight tracking-tight">
                         Empowering Aspirations, <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-400">Transforming Lives.</span>
                     </h1>
@@ -41,7 +41,7 @@ const AboutUsPage = () => {
                         <div className="space-y-12 animate-fade-in-right">
                             <div className="space-y-4">
                                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-50 text-green-700 font-bold text-sm border border-green-100 uppercase tracking-widest shadow-sm">Our Vision</div>
-                                <h3 className="text-4xl font-black text-gray-900 leading-tight">Creating a World of Equal Educational Access</h3>
+                                <h3 className="text-4xl font-extrabold text-gray-900 leading-tight">Creating a World of Equal Educational Access</h3>
                                 <p className="text-lg text-gray-600 leading-relaxed">
                                     Our vision is a future where every student, regardless of their background, has the resources to pursue higher education. We are building the infrastructure for a more equitable educational landscape.
                                 </p>
@@ -49,7 +49,7 @@ const AboutUsPage = () => {
 
                             <div className="space-y-4">
                                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-blue-700 font-bold text-sm border border-blue-100 uppercase tracking-widest shadow-sm">Our Mission</div>
-                                <h3 className="text-4xl font-black text-gray-900 leading-tight">Digitalizing Scholarship Delivery</h3>
+                                <h3 className="text-4xl font-extrabold text-gray-900 leading-tight">Digitalizing Scholarship Delivery</h3>
                                 <p className="text-lg text-gray-600 leading-relaxed">
                                     We aim to bridge the gap between financial aid providers and deserving students through a transparent, secure, and user-friendly digital ecosystem that ensures no talent is left behind.
                                 </p>
@@ -63,7 +63,7 @@ const AboutUsPage = () => {
             <section className="py-24 bg-gray-50 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-20 animate-fade-in-up">
-                        <h2 className="text-4xl font-black text-gray-900">The Pillars of Our Portal</h2>
+                        <h2 className="text-4xl font-extrabold text-gray-900">The Pillars of Our Portal</h2>
                         <div className="w-24 h-2 bg-green-500 mx-auto mt-6 rounded-full"></div>
                     </div>
 
@@ -73,7 +73,7 @@ const AboutUsPage = () => {
                                 <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 text-2xl transition-all duration-300 group-hover:rotate-6 ${pillar.color}`}>
                                     {pillar.icon}
                                 </div>
-                                <h4 className="text-2xl font-black text-gray-900 mb-4">{pillar.title}</h4>
+                                <h4 className="text-2xl font-bold text-gray-900 mb-4">{pillar.title}</h4>
                                 <p className="text-gray-600 leading-relaxed font-medium">{pillar.desc}</p>
                             </div>
                         ))}
@@ -90,7 +90,7 @@ const AboutUsPage = () => {
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center">
                         {stats.map((stat, idx) => (
                             <div key={idx} className="space-y-2 animate-fade-in-up" style={{ animationDelay: `${idx * 0.1}s` }}>
-                                <div className="text-5xl font-black text-white leading-none">{stat.value}</div>
+                                <div className="text-5xl font-extrabold text-white leading-none">{stat.value}</div>
                                 <div className="text-green-100 font-bold uppercase tracking-widest text-sm">{stat.label}</div>
                             </div>
                         ))}
@@ -117,7 +117,7 @@ const AboutUsPage = () => {
                     <div className="absolute top-0 right-0 w-64 h-64 bg-green-500 rounded-full blur-[100px] opacity-20 -mr-32 -mt-32"></div>
 
                     <div className="relative z-10 space-y-8">
-                        <h2 className="text-4xl sm:text-6xl font-black text-white leading-tight">
+                        <h2 className="text-4xl sm:text-6xl font-extrabold text-white leading-tight">
                             Ready to take the <br />
                             <span className="text-green-400">next step?</span>
                         </h2>
@@ -125,10 +125,10 @@ const AboutUsPage = () => {
                             Join thousands of students who have already transformed their futures. Explore scholarships tailored for you.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-6 justify-center pt-6">
-                            <Link to="/register" className="bg-green-500 hover:bg-green-400 text-white font-black py-5 px-10 rounded-2xl shadow-lg transition-all transform hover:scale-105 active:scale-95 text-lg uppercase tracking-widest">
+                            <Link to="/register" className="bg-green-500 hover:bg-green-400 text-white font-bold py-5 px-10 rounded-2xl shadow-lg transition-all transform hover:scale-105 active:scale-95 text-lg uppercase tracking-widest">
                                 Join Now
                             </Link>
-                            <Link to="/" className="bg-transparent border-2 border-green-500 text-green-400 hover:bg-green-500/10 font-black py-5 px-10 rounded-2xl transition-all text-lg uppercase tracking-widest">
+                            <Link to="/" className="bg-transparent border-2 border-green-500 text-green-400 hover:bg-green-500/10 font-bold py-5 px-10 rounded-2xl transition-all text-lg uppercase tracking-widest">
                                 Explore Portal
                             </Link>
                         </div>

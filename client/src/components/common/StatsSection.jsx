@@ -37,7 +37,7 @@ const StatsSection = () => (
                         <div className="flex flex-col items-center flex-1 min-w-[200px] group transition-transform duration-300 hover:-translate-y-2">
                             {stat.icon}
                             <div className="text-xl font-semibold text-gray-700 mb-2">{stat.label}</div>
-                            <div className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-teal-600">
+                            <div className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-teal-600">
                                 <AnimatedNumber value={stat.value} duration={2500} format={stat.format} />
                             </div>
                         </div>
@@ -47,7 +47,7 @@ const StatsSection = () => (
             </div>
 
             {/* --- ADDED BUTTON --- */}
-            <button className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-green-600 rounded-full shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-green-300">
+            <button className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-extrabold text-white bg-green-600 rounded-full shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-green-300">
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-green-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 <Link className="relative flex items-center cursor-pointer" to="/services">
                     Find Schemes For You
