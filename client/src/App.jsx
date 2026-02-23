@@ -27,6 +27,7 @@ import AdminUserDetail from './admin/AdminUserDetail';
 import DashboardPage from './pages/DashBoardPage';
 import ScholarshipDetailPage from './pages/ScholarshipDetailPage';
 import SettingsPage from './pages/SettingsPage';
+// import Awarded from './pages/Awarded';
 
 // Import services
 import Services from "./services/StudentServicesPage";
@@ -78,6 +79,8 @@ const App = () => {
                         <Route path="/dashboard" element={<DashboardLayout />}>
                             <Route index element={<DashboardPage />} />
                             <Route path="my-applications" element={<MyApplications />} />
+                            <Route path="settings" element={<SettingsPage />} />
+                            {/* <Route path="awarded" element={<Awarded />} /> */}
                             {/* Add routes for 'awarded' and 'settings' later */}
                         </Route>
 
