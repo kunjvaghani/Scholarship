@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const scholarshipController = require('../controllers/ScholarshipController');
+const scholarshipController = require('../controllers/scholarshipController');
 
 // --- GET all scholarships ---
 // This will be available at: /api/scholarships
