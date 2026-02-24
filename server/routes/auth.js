@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
+const os = require('os');
 const authController = require('../controllers/authController');
 const auth = require('../middleware/auth');
 
-// Set up multer for file storage. This will save files to a folder named 'uploads'.
-// Make sure you create an 'uploads' folder in your server directory.
-const upload = multer({ dest: 'uploads/' });
+// Use os.tmpdir() for serverless environments (Vercel uses a read-only filesystem)
+const upload = multer({ dest: os.tmpdir() });
 
 // Define the fields that will contain files.
 const fileUploadFields = [
@@ -19,8 +19,8 @@ const fileUploadFields = [
     { name: 'admissionProof', maxCount: 1 },
     { name: 'marksheet10th', maxCount: 1 },
     { name: 'marksheet12th', maxCount: 1 },
-    { name: 'marksheetDiploma', maxCount: 1 } , 
-    {name : 'Previous Year result', maxCount: 1},
+    { name: 'marksheetDiploma', maxCount: 1 },
+    { name: 'Previous Year result', maxCount: 1 },
 
 ];
 

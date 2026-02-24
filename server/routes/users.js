@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
+const os = require('os');
 const { getMe, getMyApplications, applyToScholarship, updateProfile } = require('../controllers/userController');
 const { protect } = require('../middleware/authMiddleware');
 
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: os.tmpdir() });
 
 const fileUploadFields = [
     { name: 'photo', maxCount: 1 },
