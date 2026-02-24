@@ -1,171 +1,67 @@
 import React, { useState, useEffect, useRef } from "react";
 
-// List your image filenames here.
-// IMPORTANT: In a React/Vite project, place these images in the `public` folder
-// at the root of your project. Then, reference them with a leading slash `/`.
-const images = [
-    "/i1.webp",
-    "/i2.webp",
-    "/i3.webp",
-    "/i4.webp",
-    "/i5.webp"
-];
-
-const sliderBg = "linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%)";
-const arrowColor = "rgb(21 128 61)";
-const arrowHoverColor = "rgb(34 197 94)";
+const images = ["/i1.webp", "/i2.webp", "/i3.webp", "/i4.webp", "/i5.webp"];
 
 const ImageSlider = () => {
     const [current, setCurrent] = useState(0);
-    const [isTransitioning, setIsTransitioning] = useState(false);
     const timeoutRef = useRef(null);
-    const sliderRef = useRef(null);
 
-    // Auto-slide functionality
     useEffect(() => {
-        const nextSlide = () => {
-            setIsTransitioning(true);
-            setTimeout(() => {
-                setCurrent((prev) => (prev + 1) % images.length);
-                setIsTransitioning(false);
-            }, 500); // Half a second for the fade-out
-        };
-
-        timeoutRef.current = setTimeout(nextSlide, 3000); // Change slide every 3 seconds
+        timeoutRef.current = setTimeout(() => {
+            setCurrent((prev) => (prev + 1) % images.length);
+        }, 4000);
         return () => clearTimeout(timeoutRef.current);
     }, [current]);
 
-    // Handlers for manual navigation
-    const goToSlide = (slideIndex) => {
-        if (isTransitioning) return;
-        clearTimeout(timeoutRef.current); // Reset auto-slide timer on manual interaction
-        setIsTransitioning(true);
-        setTimeout(() => {
-            setCurrent(slideIndex);
-            setIsTransitioning(false);
-        }, 500);
-    };
-
-    const goToPrev = () => {
-        const newIndex = (current - 1 + images.length) % images.length;
-        goToSlide(newIndex);
-    };
-
-    const goToNext = () => {
-        const newIndex = (current + 1) % images.length;
-        goToSlide(newIndex);
-    };
-
-    // 3D Tilt Effect on Mouse Move
-    useEffect(() => {
-        const slider = sliderRef.current;
-        if (!slider) return;
-
-        const handleMouseMove = (e) => {
-            const { left, top, width, height } = slider.getBoundingClientRect();
-            const x = e.clientX - left;
-            const y = e.clientY - top;
-            const rotateX = (y / height - 0.5) * -15; // Rotate up to 7.5 degrees
-            const rotateY = (x / width - 0.5) * 15;  // Rotate up to 7.5 degrees
-            slider.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
-        };
-
-        const handleMouseLeave = () => {
-            slider.style.transform = 'perspective(1500px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-        };
-
-        slider.addEventListener('mousemove', handleMouseMove);
-        slider.addEventListener('mouseleave', handleMouseLeave);
-
-        return () => {
-            slider.removeEventListener('mousemove', handleMouseMove);
-            slider.removeEventListener('mouseleave', handleMouseLeave);
-        };
-    }, []);
+    const goToSlide = (i) => { clearTimeout(timeoutRef.current); setCurrent(i); };
+    const goToPrev = () => goToSlide((current - 1 + images.length) % images.length);
+    const goToNext = () => goToSlide((current + 1) % images.length);
 
     return (
-        <div
-            ref={sliderRef}
-            className="relative w-full max-w-4xl mx-auto my-12 flex items-center justify-center transition-transform duration-700 ease-out"
-            style={{
-                minHeight: "450px",
-                background: sliderBg,
-                borderRadius: "2rem",
-                boxShadow: "0 16px 40px rgba(21,128,61,0.15), 0 4px 12px rgba(0,0,0,0.08)",
-                overflow: "hidden",
-                transformStyle: "preserve-3d"
-            }}
-        >
-            {/* Left Arrow */}
-            <ArrowButton direction="left" onClick={goToPrev} />
+        <div className="w-full bg-gradient-to-b from-green-50/50 to-white py-16">
+            <div className="max-w-6xl mx-auto px-4">
+                <div className="text-center mb-10">
+                    <h2 className="text-3xl font-bold text-gray-800">Life-Changing <span className="text-green-600">Opportunities</span></h2>
+                    <p className="text-gray-500 mt-2 text-base">Discover scholarships that shape futures across India</p>
+                </div>
 
-            {/* Image Container with Cross-fade */}
-            <div className="w-full h-[400px] relative">
-                {images.map((img, index) => (
-                    <img
-                        key={index}
-                        src={img}
-                        alt={`slide-${index}`}
-                        className="absolute inset-0 w-full h-full object-cover rounded-2xl transition-opacity duration-500 ease-in-out"
-                        style={{
-                            opacity: index === current ? 1 : 0,
-                            boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
-                            border: "2px solid rgba(255,255,255,0.5)",
-                            transform: "translateZ(50px)" // Bring image forward in 3D space
-                        }}
-                    />
-                ))}
-            </div>
+                <div className="relative rounded-2xl overflow-hidden shadow-lg bg-white" style={{ minHeight: "420px" }}>
+                    {images.map((img, i) => (
+                        <img
+                            key={i}
+                            src={img}
+                            alt={`Scholarship opportunity ${i + 1}`}
+                            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out"
+                            style={{ opacity: i === current ? 1 : 0 }}
+                        />
+                    ))}
 
-            {/* Right Arrow */}
-            <ArrowButton direction="right" onClick={goToNext} />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
 
-            {/* Navigation Dots */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20">
-                {images.map((_, index) => (
-                    <button
-                        key={index}
-                        onClick={() => goToSlide(index)}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 ${current === index ? 'bg-green-700 scale-125' : 'bg-white/70 hover:bg-white'
-                            }`}
-                        aria-label={`Go to slide ${index + 1}`}
-                    />
-                ))}
+                    {/* Arrows */}
+                    <button onClick={goToPrev} className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-md flex items-center justify-center hover:bg-white transition-all group" aria-label="Previous">
+                        <svg className="w-5 h-5 text-gray-700 group-hover:text-green-600 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
+                    </button>
+                    <button onClick={goToNext} className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-md flex items-center justify-center hover:bg-white transition-all group" aria-label="Next">
+                        <svg className="w-5 h-5 text-gray-700 group-hover:text-green-600 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                    </button>
+
+                    {/* Dots */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                        {images.map((_, i) => (
+                            <button
+                                key={i}
+                                onClick={() => goToSlide(i)}
+                                className={`rounded-full transition-all duration-300 ${current === i ? 'bg-green-500 w-6 h-2.5' : 'bg-white/70 hover:bg-white w-2.5 h-2.5'}`}
+                                aria-label={`Slide ${i + 1}`}
+                            />
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     );
 };
-
-// Arrow Button Component
-const ArrowButton = ({ direction, onClick }) => (
-    <button
-        onClick={onClick}
-        className={`absolute ${direction === 'left' ? 'left-5' : 'right-5'} z-20 flex items-center justify-center w-14 h-14 rounded-full shadow-lg group`}
-        style={{
-            background: 'rgba(255,255,255,0.3)',
-            backdropFilter: 'blur(5px)',
-            top: "50%",
-            transform: "translateY(-50%)",
-            border: "1px solid rgba(255,255,255,0.5)",
-            outline: "none",
-            cursor: "pointer",
-            transition: "background 0.3s, box-shadow 0.3s"
-        }}
-        aria-label={direction === 'left' ? 'Previous' : 'Next'}
-    >
-        <div className="absolute inset-0 bg-green-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            style={{ boxShadow: `0 0 20px ${arrowHoverColor}` }}></div>
-        <svg className="relative" width="28" height="28" fill="none" viewBox="0 0 24 24">
-            <path
-                d={direction === 'left' ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"}
-                stroke={arrowColor}
-                className="group-hover:stroke-white transition-colors duration-300"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            />
-        </svg>
-    </button>
-);
 
 export default ImageSlider;

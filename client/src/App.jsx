@@ -46,6 +46,7 @@ import StatsSection from './components/common/StatsSection';
 import TypingAnimation from './components/common/TypingAnimation';
 import ApplicationSteps from './components/common/ApplicationSteps';
 import BecomePartner from './components/common/BecomePartner';
+import HeroSection from './components/common/HeroSection';
 
 // --- Main App Component ---
 const App = () => {
@@ -54,21 +55,18 @@ const App = () => {
             <Router>
 
                 <NavBar />
-                <main>
+                <main className="pt-16">
                     <Routes>
                         <Route path="/" element={
                             <div>
-                                <TypingAnimation
-                                    text="Welcome To The Scholarship Portal"
-                                    className="text-center text-4xl mt-10 font-bold text-green-700"
-                                    duration={70}
-                                />
+                                <HeroSection />
                                 <ImageSlider />
                                 <StatsSection />
                                 <ApplicationSteps />
                                 <BecomePartner />
                             </div>
                         } />
+
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/register" element={<RegisterPage />} />
                         <Route path="/about" element={<AboutUsPage />} />

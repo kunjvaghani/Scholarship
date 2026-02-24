@@ -174,11 +174,11 @@ const Footer = () => {
                             </li>
                             <li className="flex items-center">
                                 <MailIcon />
-                                <span>kunj_______ss@gmail.com</span>
+                                <span>[EMAIL_ADDRESS]</span>
                             </li>
                             <li className="flex items-center">
                                 <PhoneIcon />
-                                <span>(+91) 1234567890 (9:00 AM - 5:30 PM)</span>
+                                <span>(+91) 9910220441 (9:00 AM - 5:30 PM)</span>
                             </li>
                         </ul>
                     </div>
