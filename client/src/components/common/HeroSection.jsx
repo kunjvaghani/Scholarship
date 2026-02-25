@@ -38,11 +38,35 @@ const HeroSection = () => {
                 <div className="absolute top-[60%] right-[20%] hero-float-reverse">
                     <div className="w-10 h-10 bg-gradient-to-br from-teal-300/20 to-green-400/10 rounded-lg border border-green-100/30 backdrop-blur-sm hero-rotate-3d shadow-sm" />
                 </div>
+                <div className="absolute top-[10%] left-[10%] hero-float">
+                    <div className="w-14 h-14 bg-gradient-to-br from-green-300/15 to-emerald-400/10 rounded-3xl border border-green-200/20 backdrop-blur-sm hero-rotate-3d shadow-md" style={{ animationDelay: '2s' }} />
+                </div>
+                <div className="absolute bottom-[10%] right-[15%] hero-float-slow">
+                    <div className="w-20 h-20 bg-gradient-to-tr from-emerald-300/10 to-teal-400/5 rounded-[2rem] border border-green-100/20 backdrop-blur-sm hero-rotate-3d-reverse shadow-xl" style={{ animationDelay: '1.5s' }} />
+                </div>
+                <div className="absolute top-[40%] right-[5%] hero-float-reverse">
+                    <div className="w-8 h-8 bg-gradient-to-bl from-green-200/20 to-teal-300/10 rounded-lg border border-green-200/40 backdrop-blur-[2px] hero-rotate-3d shadow-sm" style={{ animationDelay: '3s' }} />
+                </div>
+                <div className="absolute bottom-[50%] left-[5%] hero-float-slow">
+                    <div className="w-16 h-16 bg-gradient-to-r from-emerald-200/15 to-green-300/10 rounded-[1.5rem] border border-green-100/30 backdrop-blur-sm hero-rotate-3d shadow-lg" style={{ animationDelay: '0.5s' }} />
+                </div>
+
+                {/* Subtle depth shapes */}
+                <div className="absolute top-[25%] right-[35%] opacity-20 hero-float">
+                    <div className="w-32 h-32 border-2 border-green-500/20 rounded-full hero-rotate-3d-slow" />
+                </div>
+                <div className="absolute bottom-[15%] left-[30%] opacity-20 hero-float-reverse">
+                    <div className="w-24 h-24 border-2 border-emerald-500/15 rounded-[1rem] hero-rotate-3d-slow-reverse" />
+                </div>
+
                 <div className="absolute top-[30%] left-[30%] hero-float-slow">
                     <div className="w-6 h-6 bg-green-400/20 rounded-full hero-pulse-glow" />
                 </div>
                 <div className="absolute bottom-[40%] right-[35%] hero-float">
                     <div className="w-4 h-4 bg-emerald-400/25 rounded-full hero-pulse-glow" style={{ animationDelay: '1s' }} />
+                </div>
+                <div className="absolute top-[70%] left-[45%] hero-float-reverse">
+                    <div className="w-3 h-3 bg-teal-400/30 rounded-full hero-pulse-glow" style={{ animationDelay: '2.5s' }} />
                 </div>
 
                 {/* Grid pattern overlay */}
@@ -97,7 +121,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Trust ribbon */}
-                <div className="hero-fade-in w-full max-w-2xl" style={{ animationDelay: '0.6s' }}>
+                <div className="hero-fade-in w-full max-w-2xl mb-5" style={{ animationDelay: '0.6s' }}>
                     <div className="flex items-center justify-center gap-6 sm:gap-10 bg-white/60 backdrop-blur-md rounded-2xl py-4 px-6 border border-green-100/50 shadow-sm">
                         {[
                             { value: "15,000+", label: "Scholarships" },
@@ -157,6 +181,18 @@ const HeroSection = () => {
                     100% { transform: rotateX(-360deg) rotateY(-180deg) rotateZ(-90deg); }
                 }
                 .hero-rotate-3d-reverse { animation: hero-rotate-3d-reverse 25s linear infinite; }
+
+                @keyframes hero-rotate-3d-slow {
+                    0% { transform: rotateX(0deg) rotateY(0deg); }
+                    100% { transform: rotateX(180deg) rotateY(360deg); }
+                }
+                .hero-rotate-3d-slow { animation: hero-rotate-3d-slow 40s linear infinite; }
+
+                @keyframes hero-rotate-3d-slow-reverse {
+                    0% { transform: rotateX(0deg) rotateY(0deg); }
+                    100% { transform: rotateX(-180deg) rotateY(-360deg); }
+                }
+                .hero-rotate-3d-slow-reverse { animation: hero-rotate-3d-slow-reverse 45s linear infinite; }
 
                 @keyframes hero-pulse-glow {
                     0%, 100% { transform: scale(1); opacity: 0.6; }
