@@ -20,6 +20,7 @@ import AdminLayout from './layout/AdminLayout';
 import LoginPage from './auth/Login';
 import RegisterPage from './auth/RegisterPage';
 import ForgotPasswordPage from './auth/ForgotPasswordPage';
+import PartnerRegisterPage from './auth/PartnerRegister';
 
 // Import admin components
 import CreateScholarship from './admin/createscholarship';
@@ -68,6 +69,7 @@ const App = () => {
                         } />
 
                         <Route path="/login" element={<LoginPage />} />
+                        <Route path="/partner-register" element={<PartnerRegisterPage />} />
                         <Route path="/register" element={<RegisterPage />} />
                         <Route path="/about" element={<AboutUsPage />} />
                         <Route path="/contact" element={<ContactUsPage />} />

@@ -37,5 +37,9 @@ router.get('/user', auth, authController.getCurrentUser);
 
 router.post('/update-password', authController.updatePassword);
 
+// --- Partner (Organization) Auth Routes ---
+const partnerController = require('../controllers/partnerController');
+router.post('/partner/register', partnerController.register);
+router.post('/partner/login', partnerController.login);
 
 module.exports = router;
